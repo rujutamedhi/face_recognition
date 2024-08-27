@@ -1,4 +1,3 @@
-// AppNavigator.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -6,6 +5,8 @@ import IndexScreen from '../screens'; // Ensure correct path
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/Signup';
 import TabNavigator from './TabNavigator'; // Import the Tab Navigator
+import ProfileScreen from '../screens/ProfileScreen'; 
+
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const linking = {
       CheckTimetable: 'checktimetable',
       DashboardScreen: 'dashboardScreen',
       ComplaintsScreen: 'complaintsScreen',
+      Profile: 'profile', // Add the Profile screen route
     },
   },
 };
@@ -39,6 +41,11 @@ const AppNavigator = () => (
         name="Home" 
         component={TabNavigator} 
         options={{ headerShown: false }} 
+      />
+      <Stack.Screen 
+        name="Profile" 
+        component={ProfileScreen} 
+        options={{ title: 'Profile' }} // Customize as needed
       />
     </Stack.Navigator>
   </NavigationContainer>
