@@ -6,6 +6,8 @@ import LoginScreen from '../screens/LoginScreen'; // Adjust path as necessary
 import CheckTimetable from '../screens/Check_timetable'; // Adjust path as necessary
 import DashboardScreen from '../screens/DashboardScreen'; // Ensure correct component name
 import ComplaintsScreen from '../screens/ComplaintsScreen'; // Ensure the path is correct
+import IndexScreen from '../screens';
+import SignupScreen from '../screens/Signup';
 
 const Stack = createStackNavigator();
 
@@ -23,8 +25,18 @@ const linking = {
 
 const AppNavigator = () => (
   <NavigationContainer linking={linking}>
-    <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Navigator initialRouteName="Start">
+    <Stack.Screen name="Start" component={IndexScreen} />
+  <Stack.Screen 
+          name="Login" 
+          component={LoginScreen} 
+          options={{ title: 'Login' }}
+        />
+        <Stack.Screen 
+          name="Signup" 
+          component={SignupScreen} 
+          options={{ title: 'Signup' }}
+        />
       <Stack.Screen name="CheckTimetable" component={CheckTimetable} />
       <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
       <Stack.Screen name="ComplaintsScreen" component={ComplaintsScreen} />

@@ -9,8 +9,10 @@ const WelcomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       {/* Title */}
       <View style={[styles.halfOval, { width }]} />
-      <Text style={styles.title}>EDURISE</Text>
-
+      <Image 
+        source={require('../assets/LOGO.png')} // Replace with your image URL or local path
+        style={styles.title}
+      />
       {/* Image */}
       <Image 
         source={require('../assets/welcome.png')} // Replace with your image URL or local path
@@ -18,7 +20,7 @@ const WelcomeScreen = ({ navigation }) => {
       />
 
       {/* Register Button */}
-      <TouchableOpacity style={styles.registerButton}>
+      <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.registerButtonText}>REGISTER</Text>
       </TouchableOpacity>
 
@@ -39,9 +41,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF', // Change background color as needed
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    width: 161,
+    height:80,
     marginBottom: 50,
+    marginTop: 30,
     color: '#3A477A', // Dark purple color
   },
   image: {

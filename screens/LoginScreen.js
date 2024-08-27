@@ -1,38 +1,39 @@
-// src/screens/LoginScreen.js
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please enter email and password');
-      return;
-    }
-    // Add your login logic here
-    Alert.alert('Success', `Logged in with email: ${email}`);
-  };
-
   return (
+    
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        keyboardType="email-address"
-        value={email}
-        onChangeText={setEmail}
+      
+      <View style={styles.header}>
+      <Image 
+        source={require('../assets/LOGO.png')} // Replace with your image URL or local path
+        style={styles.title}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      <Button title="Login" onPress={handleLogin} />
+      </View>
+  
+      <View style={styles.circleContainer}>
+        <View style={styles.circleLarge} />
+        <View style={styles.circleMedium} />
+        <View style={styles.circleSmall} />
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Email or phone number"
+          placeholderTextColor="#A8BBCB"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#A8BBCB"
+          secureTextEntry={true}
+        />
+        <TouchableOpacity style={styles.loginButton}>
+          <Text style={styles.loginButtonText}>LOGIN</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -40,23 +41,85 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
   },
-  title: {
-    fontSize: 24,
+  header: {
+    flexDirection: 'COLUMN',
+    alignItems: 'center',
+    marginTop: 30
+  },
+  backButton: {
+    fontSize: 16,
+    color: '#FFF',
+    paddingRight: 10,
+  },
+  loginText: {
+    fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
+    color: '#FFF',
+  },
+  circleContainer: {
+    alignItems: 'center',
+    marginTop: 120,
+  },
+  circleLarge: {
+    width: 480,
+    height: 800,
+    borderRadius: 215,
+    backgroundColor: '#AFDBF5',
+    position: 'absolute',
+    top: 1,
+  },
+  circleMedium: {
+    width: 470,
+    height: 750,
+    borderRadius: 215,
+    backgroundColor: '#6CB4EE',
+    position: 'absolute',
+    top: 50,
+  },
+  circleSmall: {
+    width: 450,
+    height: 800,
+    borderRadius: 215,
+    backgroundColor: '#3A477A',
+    position: 'absolute',
+    top: 130,
+  },
+  inputContainer: {
+    marginTop: 270,
+    paddingHorizontal: 20,
   },
   input: {
     height: 50,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 15,
-    paddingHorizontal: 10,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    marginBottom: 20,
+    color: '#3A477A',
+  },
+  loginButton: {
+    height: 50,
+    backgroundColor: '#40A8FF',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+ 
+  TextInput:{
+   color: '#3A477A'
+  },
+  title: {
+    width: 161,
+    height:80,
+    marginBottom: 10,
+    marginTop: 2,
+    color: '#3A477A', // Dark purple color
+  },
+  loginButtonText: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
