@@ -22,7 +22,7 @@ const DashboardScreen = () => {
         <Text style={styles.cardTitle}>Weekly Performance</Text>
         <LineChart
           data={data}
-          width={340} // from react-native
+          width={340} 
           height={220}
           chartConfig={chartConfig}
           bezier

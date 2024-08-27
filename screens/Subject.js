@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 
-const App = () => {
+const SubjectClick = () => {
   // State to manage the active tab
   const [activeTab, setActiveTab] = useState('NOTES');
 
@@ -162,4 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default SubjectClick;

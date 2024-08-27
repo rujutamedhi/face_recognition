@@ -28,6 +28,14 @@ const HomeScreen = () => {
         setDates(dateArray);
     };
 
+    const handleCardClick = (subject) => {
+        navigation.navigate('SubjectClick', { subject });
+    };
+
+    const handleViewAllSubjects = () => {
+        navigation.navigate('AllSubjects'); // Navigate to AllSubjects screen
+    };
+
     return (
         <View style={styles.container}>
             {/* Top Bar */}
@@ -73,7 +81,10 @@ const HomeScreen = () => {
             <View style={styles.upcomingClassesContainer}>
                 <Text style={styles.heading}>Upcoming Classes</Text>
                 <View style={styles.classesContainer}>
-                    <View style={styles.classCard}>
+                    <TouchableOpacity
+                        style={styles.classCard}
+                        onPress={() => handleCardClick('Math 101')} // Pass the subject name or data
+                    >
                         <View style={styles.classInfo}>
                             <Text style={styles.subjectName}>Math 101</Text>
                             <Text>Teacher Name</Text>
@@ -81,30 +92,36 @@ const HomeScreen = () => {
                         <TouchableOpacity onPress={() => handleAttendance('Math 101')} style={styles.attendanceButton}>
                             <Icon name="face" size={24} color="#3a477a" />
                         </TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.classCard}>
+                    <TouchableOpacity
+                        style={styles.classCard}
+                        onPress={() => handleCardClick('Science 101')} // Pass the subject name or data
+                    >
                         <View style={styles.classInfo}>
-                            <Text style={styles.subjectName}>Math 101</Text>
+                            <Text style={styles.subjectName}>Science 101</Text>
                             <Text>Teacher Name</Text>
                         </View>
-                        <TouchableOpacity onPress={() => handleAttendance('Math 101')} style={styles.attendanceButton}>
+                        <TouchableOpacity onPress={() => handleAttendance('Science 101')} style={styles.attendanceButton}>
                             <Icon name="face" size={24} color="#3a477a" />
                         </TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.classCard}>
+                    <TouchableOpacity
+                        style={styles.classCard}
+                        onPress={() => handleCardClick('History 101')} // Pass the subject name or data
+                    >
                         <View style={styles.classInfo}>
-                            <Text style={styles.subjectName}>Math 101</Text>
+                            <Text style={styles.subjectName}>History 101</Text>
                             <Text>Teacher Name</Text>
                         </View>
-                        <TouchableOpacity onPress={() => handleAttendance('Math 101')} style={styles.attendanceButton}>
+                        <TouchableOpacity onPress={() => handleAttendance('History 101')} style={styles.attendanceButton}>
                             <Icon name="face" size={24} color="#3a477a" />
                         </TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.viewAllButton}>
-                    <Text style={styles.viewAllText}>View All Classes</Text>
+                <TouchableOpacity style={styles.viewAllButton} onPress={handleViewAllSubjects}>
+                    <Text style={styles.viewAllText}>View All Subjects</Text>
                 </TouchableOpacity>
             </View>
         </View>

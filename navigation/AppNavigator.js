@@ -1,3 +1,4 @@
+// AppNavigator.js
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -6,6 +7,8 @@ import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/Signup';
 import TabNavigator from './TabNavigator'; // Import the Tab Navigator
 import ProfileScreen from '../screens/ProfileScreen'; 
+import SubjectClick from '../screens/Subject'; 
+import AllSubjects from "../screens/AllSubjects";
 
 
 const Stack = createStackNavigator();
@@ -19,6 +22,8 @@ const linking = {
       DashboardScreen: 'dashboardScreen',
       ComplaintsScreen: 'complaintsScreen',
       Profile: 'profile', // Add the Profile screen route
+      SubjectClick: 'subjectClick', // Add the SubjectClick route
+      AllSubjects: 'allSubjects', 
     },
   },
 };
@@ -45,7 +50,17 @@ const AppNavigator = () => (
       <Stack.Screen 
         name="Profile" 
         component={ProfileScreen} 
-        options={{ title: 'Profile' }} // Customize as needed
+        options={{ title: 'Profile' }} 
+      />
+      <Stack.Screen 
+        name="SubjectClick" 
+        component={SubjectClick} 
+        options={{ title: 'Subject Details' }}
+      />
+      <Stack.Screen 
+        name="AllSubjects" 
+        component={AllSubjects} 
+        options={{ title: 'All Subjects' }} 
       />
     </Stack.Navigator>
   </NavigationContainer>
