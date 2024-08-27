@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // Ensure the icon library is installed
 import moment from 'moment'; // For date manipulation
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
+
+    const navigation = useNavigation();
     const [dates, setDates] = useState([]);
     const [currentDate, setCurrentDate] = useState(moment().format('YYYY-MM-DD'));
 
@@ -32,7 +35,9 @@ const HomeScreen = () => {
                 <Text style={styles.logo}>E</Text>
                 <View style={styles.profileContainer}>
                     <Text style={styles.username}>Username</Text>
-                    <Icon name="person" size={30} color="#3a477a" />
+                    <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                        <Icon name="person" size={30} color="#3a477a" />
+                    </TouchableOpacity>
                 </View>
             </View>
 
@@ -77,7 +82,7 @@ const HomeScreen = () => {
                             <Icon name="face" size={24} color="#3a477a" />
                         </TouchableOpacity>
                     </View>
-                    
+
                     <View style={styles.classCard}>
                         <View style={styles.classInfo}>
                             <Text style={styles.subjectName}>Math 101</Text>
@@ -183,20 +188,20 @@ const styles = StyleSheet.create({
         padding: 16,
         borderRadius: 8,
         marginBottom: 8,
-        flexDirection: 'row', 
+        flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-      },
-      classInfo: {
-        flex: 1, 
-      },
-      attendanceButton: {
+    },
+    classInfo: {
+        flex: 1,
+    },
+    attendanceButton: {
         padding: 8,
         backgroundColor: '#fff',
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-      },
+    },
     subjectName: {
         fontWeight: 'bold',
         fontSize: 20,
