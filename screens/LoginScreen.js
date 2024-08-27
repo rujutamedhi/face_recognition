@@ -1,14 +1,23 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+
+  const navigation = useNavigation();
+
+  // Function to handle button press
+  const handleLogin = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     
     <View style={styles.container}>
       
       <View style={styles.header}>
       <Image 
-        source={require('../assets/LOGO.png')} // Replace with your image URL or local path
+        source={require('../assets/LOGO.png')} 
         style={styles.title}
       />
       </View>
@@ -30,7 +39,7 @@ const LoginScreen = () => {
           placeholderTextColor="#A8BBCB"
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity style={styles.loginButton}  onPress={handleLogin}>
           <Text style={styles.loginButtonText}>LOGIN</Text>
         </TouchableOpacity>
       </View>

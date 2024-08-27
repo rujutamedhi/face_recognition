@@ -2,12 +2,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../screens/LoginScreen'; // Adjust path as necessary
-import CheckTimetable from '../screens/Check_timetable'; // Adjust path as necessary
-import DashboardScreen from '../screens/DashboardScreen'; // Ensure correct component name
-import ComplaintsScreen from '../screens/ComplaintsScreen'; // Ensure the path is correct
-import IndexScreen from '../screens';
+import IndexScreen from '../screens'; // Ensure correct path
+import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/Signup';
+import TabNavigator from './TabNavigator'; // Import the Tab Navigator
 
 const Stack = createStackNavigator();
 
@@ -25,21 +23,23 @@ const linking = {
 
 const AppNavigator = () => (
   <NavigationContainer linking={linking}>
-    <Stack.Navigator initialRouteName="Start">
-    <Stack.Screen name="Start" component={IndexScreen} />
-  <Stack.Screen 
-          name="Login" 
-          component={LoginScreen} 
-          options={{ title: 'Login' }}
-        />
-        <Stack.Screen 
-          name="Signup" 
-          component={SignupScreen} 
-          options={{ title: 'Signup' }}
-        />
-      <Stack.Screen name="CheckTimetable" component={CheckTimetable} />
-      <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
-      <Stack.Screen name="ComplaintsScreen" component={ComplaintsScreen} />
+    <Stack.Navigator initialRouteName="Index">
+      <Stack.Screen name="Index" component={IndexScreen} options={{ headerShown: false }} />
+      <Stack.Screen 
+        name="Login" 
+        component={LoginScreen} 
+        options={{ title: 'Login' }} 
+      />
+      <Stack.Screen 
+        name="Signup" 
+        component={SignupScreen} 
+        options={{ title: 'Signup' }} 
+      />
+      <Stack.Screen 
+        name="Home" 
+        component={TabNavigator} 
+        options={{ headerShown: false }} 
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );
