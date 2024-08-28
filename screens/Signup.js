@@ -1,7 +1,15 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView ,Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const SignupScreen = () => {
+
+  const navigation = useNavigation();
+
+  // Function to handle button press
+  const handleLogin = () => {
+    navigation.navigate('Home');
+  };
   return (
     <View style={styles.container}>
         
@@ -59,7 +67,7 @@ const SignupScreen = () => {
             placeholderTextColor="#A8BBCB"
             secureTextEntry={true}
           />
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>Sign In</Text>
           </TouchableOpacity>
         </View>

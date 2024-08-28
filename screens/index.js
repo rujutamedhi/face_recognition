@@ -20,7 +20,7 @@ const WelcomeScreen = ({ navigation }) => {
       />
 
       {/* Register Button */}
-      <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Signup')}>
+      <TouchableOpacity style={styles.registerButton} onPress={() => navigation.navigate('Role')}>
         <Text style={styles.registerButtonText}>REGISTER</Text>
       </TouchableOpacity>
 

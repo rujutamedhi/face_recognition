@@ -9,6 +9,7 @@ import TabNavigator from './TabNavigator'; // Import the Tab Navigator
 import ProfileScreen from '../screens/ProfileScreen'; 
 import SubjectClick from '../screens/Subject'; 
 import AllSubjects from "../screens/AllSubjects";
+import Role from '../screens/role';
 
 
 const Stack = createStackNavigator();
@@ -61,6 +62,11 @@ const AppNavigator = () => (
         name="AllSubjects" 
         component={AllSubjects} 
         options={{ title: 'All Subjects' }} 
+      />
+      <Stack.Screen 
+        name="Role" 
+        component={Role} 
+        options={{ title: 'Role' }} 
       />
     </Stack.Navigator>
   </NavigationContainer>
