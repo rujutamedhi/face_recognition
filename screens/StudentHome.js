@@ -42,7 +42,10 @@ const HomeScreen = () => {
             <View style={styles.topBar}>
                 <Text style={styles.logo}>E</Text>
                 <View style={styles.profileContainer}>
-                    <Text style={styles.username}>Username</Text>
+                <TouchableOpacity style={styles.verify} >
+                    <Text style={styles.viewAllText}>Verify face</Text>
+                </TouchableOpacity>
+            
                     <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                         <Icon name="person" size={30} color="#3a477a" />
                     </TouchableOpacity>
@@ -223,6 +226,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         color: '#3a477a',
+    },
+    verify: {
+        width: 120,
+        height: 27,
+        backgroundColor: '#3a366b',
+        alignItems: 'center',
+        marginRight: 15,
+        borderRadius: 5
     },
     viewAllButton: {
         alignItems: 'center',
