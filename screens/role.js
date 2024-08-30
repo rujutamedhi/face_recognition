@@ -8,11 +8,11 @@ const Role = ({navigation}) => {
         <Text style={styles.roleText}>Admin</Text>
       </TouchableOpacity>
 
-<TouchableOpacity style={styles.role} onPress={() => navigation.navigate('Signup')}>
+<TouchableOpacity style={styles.role} onPress={() => navigation.navigate('HomeScreen')}>
         <Text style={styles.roleText}>Student</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.role} onPress={() => navigation.navigate('Signup')}>
+      <TouchableOpacity style={styles.role} onPress={() => navigation.navigate('HomeScreent')}>
         <Text style={styles.roleText}>Teacher</Text>
       </TouchableOpacity>
         </View>

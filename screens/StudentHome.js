@@ -40,10 +40,10 @@ const HomeScreen = () => {
         <View style={styles.container}>
             {/* Top Bar */}
             <View style={styles.topBar}>
-                <Text style={styles.logo}>E</Text>
+                <Text style={styles.logo}>E StudentHome</Text>
                 <View style={styles.profileContainer}>
                 <TouchableOpacity style={styles.verify} >
-                    <Text style={styles.viewAllText}>Verify face</Text>
+                    <Text  onPress={() => navigation.navigate('Verification')} style={styles.viewAllText}>Verify face</Text>
                 </TouchableOpacity>
             
                     <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
@@ -86,7 +86,7 @@ const HomeScreen = () => {
                 <View style={styles.classesContainer}>
                     <TouchableOpacity
                         style={styles.classCard}
-                        onPress={() => handleCardClick('Math 101')} // Pass the subject name or data
+                        onPress={() => navigation.navigate('StudentSub')} // Pass the subject name or data
                     >
                         <View style={styles.classInfo}>
                             <Text style={styles.subjectName}>Math 101</Text>

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import StudentSub from './StudentSub';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import useVerify from '../hooks/useVerify';
 import { useVerifyContext } from '../Context/VerifyContext';
-const SubjectClick = () => {
-  const { verify, setVerify } = useVerifyContext();
+import { useNavigation } from '@react-navigation/native';
+const StudentSub = () => {
+    const { verify } = useVerifyContext();
+    const navigation = useNavigation();
+    console.log("*******")
   // State to manage the active tab
   const [activeTab, setActiveTab] = useState('NOTES');
-  // const [verify, setVerify] = useState(false); // State to manage attendance verification
 
   // Function to render the content based on the active tab
   const renderContent = () => {
@@ -27,58 +28,38 @@ const SubjectClick = () => {
           </ScrollView>
         );
       case 'QUIZZES':
-        return (
-          <ScrollView style={styles.content}>
-            {[1, 2, 3].map((item) => (
-              <View key={item} style={styles.card}>
-                <Text style={styles.cardTitle}>QUIZ NO. {item} : TRIGONOMETRY</Text>
-                <Text style={styles.cardDesc}>Date: 25 August, 2024</Text>
-                <Text style={styles.cardDesc}>Time: 10.00 to 10.30 am</Text>
-                <TouchableOpacity style={styles.button}>
-                  <Text style={styles.buttonText}>View Score</Text>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </ScrollView>
-        );
+            return (
+                <ScrollView style={styles.content}>
+                  {[1, 2, 3].map((item) => (
+                    <View key={item} style={styles.card}>
+                      <Text style={styles.cardTitle}>QUIZ NO. {item} : TRIGONOMETRY</Text>
+                      <Text style={styles.cardDesc}>Date: 25 August, 2024</Text>
+                      <Text style={styles.cardDesc}>Time: 10.00 to 10.30 am</Text>
+                      <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>View Score</Text>
+                      </TouchableOpacity>
+                    </View>
+                  ))}
+                </ScrollView>
+              );
+       
       case 'CHATS':
         return (
           <View style={styles.content}>
             <Text style={styles.tabContentText}>This is the Chats tab content.</Text>
+            {/* You can replace this with the actual content for the Chats tab */}
           </View>
         );
       default:
         return null;
     }
   };
-  // const getVerifyProp = () => {
-    
-  //   return verify;
-  // };
-  // Function to handle attendance press
-  const handleAttendancePress = () => {
-    Alert.alert(
-      'Attendance',
-      'Your attendance has been marked successfully!',
-      [
-        {
-          text: 'OK',
-          onPress: () => setVerify(true),
-        },
-        {
-          text: 'Unset Attendance',
-          onPress: () => setVerify(false),
-          style: 'destructive',
-        },
-      ],
-      { cancelable: true }
-    );
-  };
+
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>MATHS Teacher</Text>
+        <Text style={styles.headerText}>MATHS Student</Text>
       </View>
 
       {/* Navigation Tabs */}
@@ -98,12 +79,13 @@ const SubjectClick = () => {
       {renderContent()}
 
       {/* Footer as a Button */}
-      <TouchableOpacity style={styles.footerButton} onPress={handleAttendancePress}>
-        <Text style={styles.footerText}>ATTENDANCE</Text>
-        
-      </TouchableOpacity>
-      {/* Pass verify state to StudentSub component */}
+      <TouchableOpacity onPress={() => navigation.navigate('Attend')}
+      style={[styles.button, verify ? styles.enabledButton : styles.disabledButton]}
+      disabled={!verify}
       
+    >
+      <Text  style={styles.buttonText}>{verify ? 'Enabled Button' : 'Disabled Button'}</Text>
+    </TouchableOpacity>
     </View>
   );
 };
@@ -174,7 +156,7 @@ const styles = StyleSheet.create({
     padding: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 10
   },
   footerText: {
     color: '#3A477A',
@@ -189,4 +171,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SubjectClick;
+export default StudentSub;
